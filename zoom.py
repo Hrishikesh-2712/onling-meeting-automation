@@ -1,46 +1,41 @@
 import pyautogui
 import time
 import execute
-import datetime
+from datetime import datetime
 
 def join(meetingid,password,subject,duration):
     execute.startzoom()
     #join a meeting
     execute.startzoom()
-    print(datetime.datetime.now(),'launching zoom...')
-    time.sleep(2)
-    join_btn = pyautogui.locateCenterOnScreen('joinameet.png')
-    print(datetime.datetime.now(),'launching...')
-    pyautogui.moveTo(join_btn)
-    pyautogui.click()
-    print(datetime.datetime.now(), 'joining',subject,'class')
+    print(datetime.now(),'launching zoom...')
+    time.sleep(5)
+    pyautogui.press('tab')
+    pyautogui.press('enter')
+    print(datetime.now(), 'joining',subject,'class')
 
     #enter meeting id
-    join_btn = pyautogui.locateCenterOnScreen('enter_id.png')
-    pyautogui.moveTo(join_btn)
-    print(datetime.datetime.now(),'entering id...')
+    time.sleep(5)
+    print(datetime.now(),'entering id...')
     pyautogui.write(meetingid)
 
     #join
-    join_btn = pyautogui.locateCenterOnScreen('join.png')
-    pyautogui.moveTo(join_btn)
-    pyautogui.click()
+    pyautogui.press('enter')
+    time.sleep(5)
 
     #meeting password
-    join_btn = pyautogui.locateCenterOnScreen('password.png')
-    pyautogui.moveTo(join_btn)
     pyautogui.write(password)
-    print(datetime.datetime.now(),'entering password...')
+    print(datetime.now(),'entering password...')
 
     #join meeting
-    join_btn = pyautogui.locateCenterOnScreen('join_meeting.png')
-    pyautogui.moveTo(join_btn)
-    pyautogui.click()
-    print(datetime.datetime.now(),'entering class.')
+    pyautogui.press('enter')
+    print(datetime.now(),'entering class.')
 
     #join audio
-    time.sleep(35)
-    pyautogui.moveTo(620, 320, 2, pyautogui.easeOutQuad)
+    time.sleep(30)
+    x,y=pyautogui.size()
+    x=x/2.2
+    y=y/2.4
+    pyautogui.moveTo(x,y)
     pyautogui.click(button='left', clicks=3)
 
     #waiting for class to over
@@ -48,3 +43,4 @@ def join(meetingid,password,subject,duration):
 
     #closing zoom
     execute.closezoom()
+    print(datetime.now(),'left class\n\n waiting of next class to start')
