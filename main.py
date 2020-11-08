@@ -1,5 +1,5 @@
 '''
-playing with datetime
+main
 
 '''
 
@@ -15,7 +15,6 @@ print(x.strftime("%A"))'''
 while True:
     import routine
     t = datetime.now().strftime("%H:%M")
-    print(t)
     tim=routine.timings()
     mt=routine.meetids()
     pss=routine.passwords()
