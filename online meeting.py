@@ -1,10 +1,5 @@
 #main file
 
-'''
-playing with datetime
-
-'''
-
 import zoom
 import meet
 from datetime import datetime
