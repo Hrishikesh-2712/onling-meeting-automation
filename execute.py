@@ -1,8 +1,9 @@
 import os
-
+import getpass
+user=getpass.getuser()
 
 def startzoom():
-    os.startfile(r"C:/Users/Administrator/AppData/Roaming/Zoom/bin/Zoom.exe")
+    os.startfile(rf"C:/Users/{user}/AppData/Roaming/Zoom/bin/Zoom.exe")
     return ""
 
 
