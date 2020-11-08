@@ -10,7 +10,7 @@ def join(meetid,password,subject,duration):
     webbrowser.open(a)
     print(datetime.now(), 'launched browswe')
 
-    time.sleep(20)
+    time.sleep(25)
     #mute mic
     pyautogui.hotkey('ctrl','d')
     print(datetime.now(), 'mic off')
@@ -22,11 +22,10 @@ def join(meetid,password,subject,duration):
     #click join
     time.sleep(2)
     # not working join_btn = pyautogui.locateCenterOnScreen('meet_join.png')
-    x, y= pyautogui.size()
-    a=x/1.32
-    a=y/1.75
-    pyautogui.moveTo(a,b)
-    pyautogui.click()
+    for loop in range (5):
+        pyautogui.press('tab')
+        time.sleep(1)
+    pyautogui.press('enter')
     print(datetime.now(), 'joining',subject,'class')
 
     #waiting for class to over
@@ -35,6 +34,9 @@ def join(meetid,password,subject,duration):
     #hang up
     pyautogui.moveTo(620, 320, 2, pyautogui.easeOutQuad)
     pyautogui.click()
-    join_btn = pyautogui.moveTo(x/2,y)
-    pyautogui.moveTo(join_btn)
+    x,y=pyautogui.size()
+    x=x/2
+    y=y/1.1294
+    pyautogui.moveTo(x,y)
     pyautogui.click()
+    print(datetime.now(),'left class\n\n waiting of next class to start')
