@@ -29,7 +29,7 @@ def join(meetid,password,subject,duration):
     print(datetime.now(), 'joining',subject,'class')
 
     #waiting for class to over
-    time.sleep(10)
+    time.sleep(duration)
 
     #hang up
     pyautogui.moveTo(620, 320, 2, pyautogui.easeOutQuad)
