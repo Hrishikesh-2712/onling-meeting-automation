@@ -1,4 +1,4 @@
-time,meeting id,Password,Subject,duration
+time(24-hour format),meeting id,Password,Subject,duration(in seconds)
 08:00,73263794809,Organic,Chemistry_Tuition,2700
 09:00,76911467650,5wJ1Ms,Chemistry_School,2700
 09:50,7462732282,dks654,Physics,2700
