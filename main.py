@@ -21,7 +21,7 @@ def joinmeet(meetid,password,subject,duration):
     
     #click join
     time.sleep(2)
-    for loop in range (5):
+    for loop in range (6):
         pyautogui.press('tab')
         time.sleep(0.1)
     pyautogui.press('enter')
@@ -40,6 +40,7 @@ def joinmeet(meetid,password,subject,duration):
     y=y/1.1294
     pyautogui.moveTo(x,y)
     pyautogui.click()
+    pyautogui.hotkey('alt','tab')
     print(datetime.now().strftime('%H:%M:%S %D'),'left class\n\n waiting of next class to start')
 
 
@@ -47,7 +48,7 @@ def joinmeet(meetid,password,subject,duration):
 
 
 
-
+#zoom
 def joinzoom(meetingid,password,subject,duration):
     #start zoom
     os.system(r"TASKKILL /F /IM zoom.exe") # if previous class was running it would be closed
