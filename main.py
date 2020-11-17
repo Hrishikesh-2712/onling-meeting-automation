@@ -1,14 +1,12 @@
 from datetime import datetime
 import time, os, getpass, csv, webbrowser, pyautogui
 
-
-
 #gmeet
 def joinmeet(meetid,password,subject,duration):
     a=rf'https:{meetid}/{password}'
     webbrowser.open(a)
     print(datetime.now().strftime('%H:%M:%S %D'), 'launched browswe')
-
+    #waiting for page to load
     time.sleep(30)
     
     #mute mic
@@ -21,9 +19,9 @@ def joinmeet(meetid,password,subject,duration):
     
     #click join
     time.sleep(2)
-    for loop in range (6):
+    for loop in range (5):
         pyautogui.press('tab')
-        time.sleep(0.1)
+        time.sleep(0.3)
     pyautogui.press('enter')
     print(datetime.now().strftime('%H:%M:%S %D'), 'joining',subject,'class')
 
@@ -43,11 +41,7 @@ def joinmeet(meetid,password,subject,duration):
     pyautogui.hotkey('alt','tab')
     print(datetime.now().strftime('%H:%M:%S %D'),'left class\n\n waiting of next class to start')
 
-
-
-
-
-
+    
 #zoom
 def joinzoom(meetingid,password,subject,duration):
     #start zoom
@@ -95,15 +89,8 @@ def joinzoom(meetingid,password,subject,duration):
     #closing zoom
     os.system(r"TASKKILL /F /IM zoom.exe")
     print(datetime.now().strftime('%H:%M:%S %D'),'left class\n\n waiting of next class to start')
-
-
-
-
-
-
-
-
-
+    
+    
 while True:
     with open('routine.csv','r') as f:
         cs=csv.reader(f)
