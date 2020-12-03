@@ -1,8 +1,8 @@
-time(24-hour format),meeting id,Password,Subject,duration(in seconds)
-08:00,1234567890,HelloPassword,Chemistry_Tuition,2700
-09:00,1234569807,ghy643,Chemistry_School,2700
-09:50,0987456321,ghtu7654,Physics,2700
-10:54,meet.google.com,xxx-yyyy-zzz,Trail,20
-10:40,7594521059,password,class,2700
-12:20,meet.google.com,xxx-yyyy-zzz,xyz,2700
-10:51,95043926665,7JKZ1B,Trail,20
+time(24-hour format),end time,meeting id,Password,Subject,screenshot(enter intervels in second)
+08:15,09:00,1234567890,HelloPassword,Chemistry_Tuition,10
+09:00,09:40,1234569807,ghy643,Chemistry_School,5
+09:50,10:30,0987456321,ghtu7654,Physics,no
+10:54,11:00,meet.google.com,xxx-yyyy-zzz,Trail,15
+10:40,10:42,7594521059,password,class,yes
+12:20,13:00,meet.google.com,xxx-yyyy-zzz,xyz,yeaa
+10:51,10:53,95043926665,7JKZ1B,Trail,nope
