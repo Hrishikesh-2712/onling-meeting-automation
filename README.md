@@ -1,26 +1,31 @@
-# online meeting automation
+# online meeting automation<br>
 
 
-Q.How to get started?
+Q.How to get started?<br>
 ->Enter meeting details in routine.csv file then run either main.py or 
-exe file.
+exe file.<br>
 
 
-FAQs
-Q.Where it suports?
-->Windows operating system.
+FAQs<br>
+Q.Where it suports?<br>
+->Windows operating system.<br>
 
-Q.Which Apps?
-->Google Meet
-->Zoom
+Q.Which Apps?<br>
+->Google Meet<br>
+->Zoom<br>
 
-Q.What type of sheduling it has?
-->Same routine Everyday
+Q.What type of sheduling it has?<br>
+->Same routine Everyday<br>
 
-Q.What are the requirments?
-Zoom installed
+Q.What are the requirments?<br>
+Zoom installed<br>
 
-# Coming up next !
 
-->Automatic Screenshot feature
-->Linux Support
+# Added Screenshot suppport
+takes shots by user defined value in routune.csv
+
+
+# Coming up next ! <br>
+
+->Linux Support<br>
+
