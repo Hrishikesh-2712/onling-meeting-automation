@@ -147,7 +147,7 @@ def shots(s,h,m,sub):
     check(sub) #creating folders
     global folder
     print('taking screenshots')
-    while h >=int(datetime.now().strftime('%H')) and m >int(datetime.now().strftime('%M')):
+    while h >int(datetime.datetime.now().strftime('%H')) or h ==int(datetime.datetime.now().strftime('%H')) and m >int(datetime.datetime.now().strftime('%M')):
         now=datetime.now().strftime('%H %M %S %d %M %Y')
         pyautogui.screenshot().save(f'C://Users//{user}//Pictures//Screenshots//{sub}//{folder}//{now}.png')
         print(now,'took a screenshot')
