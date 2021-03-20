@@ -17,7 +17,8 @@ Q.What type of sheduling it has?<br>
 ->Same routine Everyday<br>
 
 Q.What are the requirments?<br>
-->must not signed in Zoom account<br>
+->must not signed in Zoom app<br>
+->google chrome version 89 installed
 
 
 # Added Screenshot suppport<br>
