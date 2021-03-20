@@ -27,5 +27,5 @@ Q.What are the requirments?<br>
 # Gmail account needed for meet<br>
 ->put your gamil account in line number 250,251<br>
 
-# Coming up next ! <br>
-->Linux Support(dropped)<br>
+# Packages used mainly
+->selenium, pyautogui
