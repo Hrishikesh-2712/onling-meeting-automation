@@ -2,8 +2,7 @@
 
 
 Q.How to get started?<br>
-->Enter meeting details in routine.csv file then run either main.py or 
-exe file.<br>
+->Enter meeting details in routine.csv file then run either main.py or exe file.<br>
 
 
 FAQs<br>
@@ -18,14 +17,14 @@ Q.What type of sheduling it has?<br>
 ->Same routine Everyday<br>
 
 Q.What are the requirments?<br>
-Zoom installed<br>
+->must not signed in Zoom account<br>
 
 
-# Added Screenshot suppport
-takes shots by user defined value in routune.csv
+# Added Screenshot suppport<br>
+->takes shots by user defined value in routune.csv<br>
 
+# Gmail account needed for meet<br>
+->put your gamil account in line number 250,251<br>
 
 # Coming up next ! <br>
-
-->Linux Support<br>
-
+->Linux Support(dropped)<br>
