@@ -3,6 +3,7 @@ from datetime import datetime
 from selenium import webdriver
 import csv, getpass, os, pyautogui, requests
 from selenium.webdriver.chrome.options import Options
+import mysql.connector
 
 user = getpass.getuser()  # get current user name
 folder = ''
@@ -10,9 +11,7 @@ date = ''
 
 
 # gmeet
-def joinmeet(end_time, meetid, password, subject, screenshot):
-    a = rf'https:{meetid}/{password}'
-
+def joinmeet(password, subject, screenshot):
     print(datetime.now().strftime('%H:%M:%S %D'), 'launched browswe')
 
     join_meet(password)
@@ -24,9 +23,7 @@ def joinmeet(end_time, meetid, password, subject, screenshot):
 
 
 def gmail_login(mail_address, password):
-    global logged
     global driver
-
     opt = Options()
     opt.add_argument('--disable-blink-features=AutomationControlled')
     opt.add_argument('--start-maximized')
@@ -40,12 +37,12 @@ def gmail_login(mail_address, password):
 
     # Login Page 
     driver.get(f'https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://meet.google.com')
-    # input Gmail 
+    # input Gmail
     driver.find_element_by_id("identifierId").send_keys(mail_address)
     driver.find_element_by_id("identifierNext").click()
     driver.implicitly_wait(100)
 
-    # input Password 
+    # input Password
     driver.find_element_by_xpath('//*[@id="password"]/div[1]/div/div[1]/input').send_keys(password)
     driver.implicitly_wait(100)
     driver.find_element_by_id("passwordNext").click()
@@ -59,13 +56,13 @@ def join_meet(meetid):
     global driver
     driver.get(f'https://meet.google.com/{meetid}')
     driver.maximize_window()
-    driver.implicitly_wait(1000)
+    driver.implicitly_wait(900)
     sleep(2)
     driver.find_element_by_css_selector(
         '#yDmH0d > c-wiz > div > div > div:nth-child(9) > div.crqnQb > div > div > div.vgJExf > div > div.KieQAe > '
         'div.ZUpb4c > div.oORaUb.NONs6c > div > div.EhAUAc > div.ZB88ed > div > div > div > span > span > div > '
         'div.IYwVEf.HotEze.uB7U9e.nAZzG > div > svg').click()
-    driver.implicitly_wait(3000)
+    driver.implicitly_wait(600)
 
     # turn off camera 
     sleep(1)
@@ -73,11 +70,11 @@ def join_meet(meetid):
         '#yDmH0d > c-wiz > div > div > div:nth-child(9) > div.crqnQb > div > div > div.vgJExf > div > div.KieQAe > '
         'div.ZUpb4c > div.oORaUb.NONs6c > div > div.EhAUAc > div.GOH7Zb > div > div > span > span > div > div > '
         'svg').click()
-    driver.implicitly_wait(3000)
+    driver.implicitly_wait(600)
 
     # Join meet
     sleep(5)
-    driver.implicitly_wait(2000)
+    driver.implicitly_wait(600)
     driver.find_element_by_css_selector('div.uArJ5e.UQuaGc.Y5sE8d.uyXBBb.xKiqt').click()
     pyautogui.press('f11')
 
@@ -247,9 +244,68 @@ def se(a):
 
 print('loading...')
 
-mail_address = 'jackoggy.cn18@gmail.com'
-pas = 'oggyjackcn18'
-gmail_login(mail_address, pas)
+
+def mpass():
+    global ps
+    os.popen('attrib -h .t')
+    if os.path.exists(r'.t'):
+        with open('.t', 'r') as f:
+            c = f.read()
+            if len(c) < 4:
+                with open('.t', 'w') as fg:
+                    ps = pyautogui.password('please enter mysql password')
+                    fg.write(ps)
+            else:
+                ps = c
+                print(ps)
+    else:
+        with open('.t', 'w') as f:
+            ps = pyautogui.password('please enter mysql password')
+            f.write(ps)
+
+    os.popen('attrib +h .t')
+
+
+gpass = ''
+gid = ''
+
+
+def database():
+    global gpass
+    global gid
+    db = mysql.connector.connect(host="localhost", user="root", passwd=ps)
+    cur = db.cursor()
+    cur.execute('SHOW DATABASES;')
+    d = cur.fetchall()
+    print(d)
+    if ('creed',) in d:
+        cur.execute('USE creed;')
+        cur.execute('SELECT * FROM c;')
+        d = cur.fetchall()[0]
+        print(d, type(d), '\n\n\n')
+        print(d[0] + '\n' + d[1] + '\n\n')
+        gid = d[0]
+        gpass = d[1]
+
+    else:
+        gid = pyautogui.prompt('please enter gmail address')
+        gpass = pyautogui.password('please enter gmail password')
+        i = gid
+        p = gpass
+        print(i, p)
+        cur.execute('CREATE DATABASE creed;')
+        cur.execute('USE creed;')
+        cur.execute('CREATE TABLE c(i varchar(200) not null, p varchar(200) not null);')
+        cur.execute("INSERT INTO c VALUES('{}','{}');".format(gid, gpass))
+        db.commit()
+
+    print(gid, gpass)
+
+
+mpass()
+database()
+
+gmail_login(gid, gpass)
 print('loaded')
 os.system('cls')
 print(datetime.now().strftime('%H:%M:%S %D'), 'reading routine file for upcoming class')
@@ -263,7 +319,7 @@ while True:
             if row[0] == now:
                 print(now, 'in timings')
                 if row[2] == 'meet.google.com':
-                    joinmeet(row[1], row[2], row[3], row[4], se(row[5]))
+                    joinmeet(row[3], row[4], se(row[5]))
                 elif row[2].isdigit:
                     joinzoom(row[1], row[2], row[3], row[4], se(row[5]))
                 else:
